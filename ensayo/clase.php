@@ -24,6 +24,18 @@ class Usuario{
         }
         return $salida;
     }
+
+    public static function actualizarDatos($documento,$nombre,$fecha,$contraseña){
+        include('conexion.php');
+        $salida = "";
+        $sql =" update tb_usuarios set nombre = '$nombre',";
+        $sql .= "fec_nac = '$fecha',contraseña = '$contraseña' ";
+        $sql .= "where documento = '$documento' ";
+        $consulta = $conexion->query($sql);
+        if($consulta){
+            return "ya se actualizó";
+        }
+    }
 }
 
 class MOSTRAR{
@@ -58,4 +70,5 @@ class MOSTRAR{
         return $salida; 
     }   
 }
+
 
